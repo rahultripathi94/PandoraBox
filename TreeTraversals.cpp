@@ -21,6 +21,16 @@ void r_Preorder(struct Node *root){
     }
 }
 
+void r_Postorder(struct Node *root){
+    if(root == NULL)
+        return;
+    else{
+        r_Postorder(root->left);
+        r_Postorder(root->right);
+        cout<<root->data<<" ";
+    }
+}
+
 int main(){
     struct Node *root = new Node(10);
     root->left = new Node(-5);
