@@ -41,6 +41,24 @@ void r_Postorder(struct Node *root){
     }
 }
 
+void preorder(struct Node *root){
+    if(root==NULL)
+        return;
+    else{
+        stack<Node*> stack;
+        stack.push(root);
+        while(!stack.empty()){
+            Node *temp = stack.top();
+            stack.pop();
+            cout<<temp->data<<" ";
+            if(temp->right)
+                stack.push(temp->right);
+            if(temp->left)
+                stack.push(temp->left);
+        }
+    }
+}
+
 int main(){
     struct Node *root = new Node(10);
     root->left = new Node(-5);
@@ -51,6 +69,8 @@ int main(){
     root->right->right = new Node(36);
 
     r_Preorder(root);
+    cout<<"\n";
+    preorder(root);
 }
 
 
